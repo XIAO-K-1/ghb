@@ -1,0 +1,22 @@
+{
+  "name": "yusuxun-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "豫宿巡 — 基于AI大模型与RAG的古都民宿贷后赋能与风控系统（银行端Web + 老板端App）",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "echarts": "^5.5.1",
+    "echarts-gl": "^2.1.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^5.4.11"
+  }
+}

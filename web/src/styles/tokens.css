@@ -1,0 +1,103 @@
+/* =============================================================
+   豫宿巡 · 设计系统 Design Tokens
+   设计理念：「古今交融，科技护城」— 新中式金融科技风
+   - 银行端：贷后风控指挥舱（冷峻 / 深色 / 数据大屏）
+   - 老板端：AI经营助手（温暖 / 浅色 / 大字号易读）
+   ============================================================= */
+
+:root {
+  /* ---------- 品牌色 ---------- */
+  --brand-blue: #165dff;         /* 豫·科技蓝：金融 / 科技 / 专业 */
+  --brand-blue-600: #0e42c9;
+  --brand-blue-400: #4b83ff;
+  --brand-gold: #ffb800;         /* 古都金：洛阳开封文化底蕴 */
+  --brand-gold-600: #d99a00;
+  --brand-gold-400: #ffcd4d;
+
+  /* ---------- 功能色（风险等级） ---------- */
+  --risk-red: #f53f3f;
+  --risk-red-glow: rgba(245, 63, 63, 0.55);
+  --risk-amber: #ff7d00;
+  --risk-amber-glow: rgba(255, 125, 0, 0.5);
+  --risk-green: #00b42a;
+  --risk-green-glow: rgba(0, 180, 42, 0.45);
+
+  /* ---------- 字体 ---------- */
+  --font-sans: "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei UI",
+    "Microsoft YaHei", "Source Han Sans SC", system-ui, -apple-system, sans-serif;
+  --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong",
+    "SimSun", serif;
+  /* 数字：Bahnschrift 为 Windows 自带的 DIN 风格字体，跨机可用 */
+  --font-num: "Bahnschrift", "DIN Alternate", "Saira Condensed",
+    "Roboto Condensed", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  /* ---------- 圆角 / 间距 ---------- */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* ---------- 层级阴影 ---------- */
+  --shadow-soft: 0 10px 30px -12px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 24px 60px -24px rgba(0, 0, 0, 0.55);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* =============================================================
+   银行端 · 贷后风控指挥舱（深色）
+   ============================================================= */
+.theme-bank {
+  --bg-0: #050b16;
+  --bg-1: #0a192f;
+  --bg-2: #0d2140;
+  --panel: rgba(17, 34, 61, 0.72);
+  --panel-solid: #10233f;
+  --panel-hi: rgba(31, 58, 99, 0.6);
+  --line: rgba(96, 150, 255, 0.16);
+  --line-strong: rgba(96, 150, 255, 0.34);
+
+  --text-1: #eaf2ff;
+  --text-2: #a9bcd9;
+  --text-3: #6d82a6;
+
+  --accent: var(--brand-blue);
+  --accent-glow: rgba(22, 93, 255, 0.5);
+  --accent-soft: rgba(22, 93, 255, 0.14);
+  --gold-soft: rgba(255, 184, 0, 0.14);
+
+  color: var(--text-1);
+  background: var(--bg-0);
+}
+
+/* =============================================================
+   老板端 · AI经营助手（浅色）
+   ============================================================= */
+.theme-app {
+  --bg-0: #f2f4f8;
+  --bg-1: #f7f8fa;
+  --panel: #ffffff;
+  --panel-solid: #ffffff;
+  --panel-hi: #f3f6fc;
+  --line: rgba(29, 33, 41, 0.08);
+  --line-strong: rgba(22, 93, 255, 0.22);
+
+  --text-1: #1d2129;
+  --text-2: #4e5969;
+  --text-3: #86909c;
+
+  --accent: var(--brand-blue);
+  --accent-glow: rgba(22, 93, 255, 0.28);
+  --accent-soft: rgba(22, 93, 255, 0.08);
+  --gold-soft: rgba(255, 184, 0, 0.16);
+
+  color: var(--text-1);
+  background: var(--bg-1);
+}
+
+/* ---------- 风险语义工具类 ---------- */
+.risk-red { --risk: var(--risk-red); --risk-glow: var(--risk-red-glow); }
+.risk-amber { --risk: var(--risk-amber); --risk-glow: var(--risk-amber-glow); }
+.risk-green { --risk: var(--risk-green); --risk-glow: var(--risk-green-glow); }

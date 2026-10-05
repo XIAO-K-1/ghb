@@ -1,0 +1,302 @@
+/* =============================================================
+   豫宿巡 · 基础样式 & 通用组件原子
+   ============================================================= */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body, #app { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background: #050b16;
+}
+
+h1, h2, h3, h4, h5, p, figure { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img { display: block; max-width: 100%; }
+
+/* ---------- 数字排版 ---------- */
+.num {
+  font-family: var(--font-num);
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  letter-spacing: 0.01em;
+  font-weight: 600;
+}
+.num-xl { font-family: var(--font-num); font-size: 42px; line-height: 1.05; font-weight: 700; letter-spacing: -0.01em; }
+.num-lg { font-family: var(--font-num); font-size: 30px; line-height: 1.1; font-weight: 700; }
+.num-md { font-family: var(--font-num); font-size: 22px; line-height: 1.15; font-weight: 600; }
+
+/* ---------- 印章 / 古都金装饰 ---------- */
+.seal {
+  font-family: var(--font-serif);
+  color: var(--brand-gold);
+  border: 1.5px solid rgba(255, 184, 0, 0.55);
+  border-radius: 6px;
+  padding: 1px 7px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  writing-mode: horizontal-tb;
+}
+
+.title-serif {
+  font-family: var(--font-serif);
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+/* ---------- 滚动条 ---------- */
+.theme-bank ::-webkit-scrollbar { width: 8px; height: 8px; }
+.theme-bank ::-webkit-scrollbar-thumb {
+  background: rgba(96, 150, 255, 0.28);
+  border-radius: 99px;
+}
+.theme-bank ::-webkit-scrollbar-thumb:hover { background: rgba(96, 150, 255, 0.5); }
+.theme-bank ::-webkit-scrollbar-track { background: transparent; }
+
+.theme-app ::-webkit-scrollbar { width: 6px; }
+.theme-app ::-webkit-scrollbar-thumb { background: rgba(29, 33, 41, 0.16); border-radius: 99px; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+/* =============================================================
+   玻璃拟态卡片（银行端）
+   ============================================================= */
+.glass {
+  position: relative;
+  background: linear-gradient(160deg, rgba(23, 45, 80, 0.78), rgba(10, 25, 47, 0.72));
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 18px 40px -28px rgba(0, 0, 0, 0.9);
+}
+.glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(140deg, rgba(120, 175, 255, 0.35), transparent 42%, transparent 60%, rgba(255, 184, 0, 0.18));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* 角落科技切角 */
+.corner-notch::before,
+.corner-notch::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--accent);
+  opacity: 0.65;
+}
+.corner-notch::before { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; border-top-left-radius: 4px; }
+.corner-notch::after { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; border-bottom-right-radius: 4px; }
+
+/* =============================================================
+   动画
+   ============================================================= */
+@keyframes pulse-ring {
+  0% { transform: scale(0.55); opacity: 0.85; }
+  70% { transform: scale(2.4); opacity: 0; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+@keyframes soft-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes shimmer {
+  0% { background-position: -220% 0; }
+  100% { background-position: 220% 0; }
+}
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes dash-flow { to { stroke-dashoffset: -240; } }
+@keyframes gradient-drift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes typing-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+.rise-in { animation: rise-in 0.6s var(--ease-out) both; }
+.fade-in { animation: fade-in 0.7s var(--ease-out) both; }
+
+/* 交错入场 */
+.stagger > * { animation: rise-in 0.6s var(--ease-out) both; }
+.stagger > *:nth-child(1) { animation-delay: 0.04s; }
+.stagger > *:nth-child(2) { animation-delay: 0.10s; }
+.stagger > *:nth-child(3) { animation-delay: 0.16s; }
+.stagger > *:nth-child(4) { animation-delay: 0.22s; }
+.stagger > *:nth-child(5) { animation-delay: 0.28s; }
+.stagger > *:nth-child(6) { animation-delay: 0.34s; }
+.stagger > *:nth-child(7) { animation-delay: 0.40s; }
+.stagger > *:nth-child(8) { animation-delay: 0.46s; }
+
+/* 骨架屏 */
+.skeleton {
+  background: linear-gradient(100deg, var(--panel-hi) 30%, rgba(120, 175, 255, 0.22) 50%, var(--panel-hi) 70%);
+  background-size: 220% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: var(--r-sm);
+}
+
+/* =============================================================
+   通用小部件（两端共用，颜色自适应）
+   ============================================================= */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 12px;
+  border-radius: var(--r-pill);
+  font-size: 12px;
+  border: 1px solid var(--line);
+  color: var(--text-2);
+  background: var(--accent-soft);
+  white-space: nowrap;
+}
+.chip.is-active {
+  color: #fff;
+  background: var(--accent);
+  border-color: transparent;
+  box-shadow: 0 6px 18px -8px var(--accent-glow);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--risk, var(--text-3));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--risk, #888) 22%, transparent);
+  flex: 0 0 auto;
+}
+
+.level-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--risk);
+  background: color-mix(in srgb, var(--risk) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--risk) 38%, transparent);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.2s var(--ease-out), box-shadow 0.25s var(--ease-out), background 0.25s;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px) scale(0.99); }
+.btn-primary {
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand-blue-400), var(--brand-blue));
+  box-shadow: 0 12px 26px -12px var(--accent-glow);
+}
+.btn-primary:hover { box-shadow: 0 16px 34px -12px var(--accent-glow); transform: translateY(-1px); }
+.btn-gold {
+  color: #2a1c00;
+  background: linear-gradient(135deg, var(--brand-gold-400), var(--brand-gold));
+  box-shadow: 0 12px 26px -12px rgba(255, 184, 0, 0.6);
+}
+.btn-ghost {
+  color: var(--text-2);
+  border: 1px solid var(--line);
+  background: transparent;
+}
+.btn-ghost:hover { color: var(--text-1); border-color: var(--line-strong); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* 分段控件 */
+.segmented {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  border: 1px solid var(--line);
+}
+.segmented button {
+  height: 30px;
+  padding: 0 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  color: var(--text-2);
+  transition: all 0.22s var(--ease-out);
+}
+.segmented button.is-active {
+  color: var(--text-1);
+  background: var(--panel-hi);
+  box-shadow: 0 4px 12px -6px rgba(0, 0, 0, 0.6);
+}
+.theme-bank .segmented button.is-active { background: rgba(22, 93, 255, 0.28); color: #fff; }
+
+/* 文本工具 */
+.muted { color: var(--text-3); }
+.dim { color: var(--text-2); }
+.mono-label {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.divider { height: 1px; background: var(--line); border: 0; margin: 0; }
+
+/* 徽标数字 */
+.badge-num {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--risk-red);
+  color: #fff;
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-num);
+}
+.badge-num.msg { background: linear-gradient(135deg, #ffcd4d, #ffb800); color: #2a1c00; }
